@@ -5,26 +5,26 @@ const primary = '#E30b13'
 
 module.exports = {
   content: [
-    "./pages/**/*.{js, ts, jsx, tsx}",
-    "./app/component/**/*.{js, ts, jsx, tsx}",
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./app/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     colors: {
       primary,
       black: colors.black,
       white: colors.white,
+      gray: {
+        300: '#d9dae8',
+        500: '#999AA5',
+        600: '#66676E',
+        700: '#39393f',
+        800: '#242529',
+        900: '#191B1F',
+        950: '#101215',
+      },
       transparent: colors.transparent,
       yellow: {
         700: '#f5c521'
-      },
-      gray: {
-        300: "#d9dae8",
-        500: "#999aa5",
-        600: "#66676e",
-        700: "#39393f",
-        800: "#242529",
-        900: "#191b1f",
-        950: "#101215",
       },
     },
     extend: {
