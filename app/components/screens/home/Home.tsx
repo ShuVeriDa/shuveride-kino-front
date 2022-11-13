@@ -3,6 +3,7 @@ import {IHome} from "@/screens/home/home.interface";
 import {Layout} from "@/components/layout/Layout";
 import {Meta} from "@/utils/meta/Meta";
 import {Heading} from "@/ui/heading/Heading";
+import {toastr} from "react-redux-toastr";
 
 interface HomePropsType {
 }
