@@ -7,10 +7,9 @@ import {IAuthInput} from "@/screens/auth/auth.interface";
 import styles from './Auth.module.scss';
 import {Meta} from "@/utils/meta/Meta";
 import {Heading} from "@/ui/heading/Heading";
-import {Simulate} from "react-dom/test-utils";
-import submit = Simulate.submit;
 import {Button} from "@/ui/form-elements/Button";
 import {AuthFields} from "@/screens/auth/AuthFields";
+import {useActions} from "@/hooks/useActions";
 
 interface IAuthProps {
 
@@ -27,12 +26,7 @@ export const Auth: FC<IAuthProps> = () => {
     mode: 'onChange'
   })
 
-  const login = (data: any) => {
-    console.table(data)
-  }
-  const register = (data: any) => {
-    console.table(data)
-  }
+  const {login, register} = useActions()
 
   const onSubmit:SubmitHandler<IAuthInput> = (data) => {
     if (type === 'login') login(data)
