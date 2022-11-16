@@ -1,13 +1,17 @@
 import {NextPage} from "next";
+import {NextPageAuth} from "@/shared/types/auth.types";
 
 interface IAdminPageProps {
 }
 
-const AdminPage: NextPage<IAdminPageProps> = () => {
+const AdminPage: NextPageAuth<IAdminPageProps> = () => {
   return (
     <div>
-      Index
+      Admin Page
     </div>
   );
 };
+
+AdminPage.isOnlyAdmin = true
+
 export default AdminPage
