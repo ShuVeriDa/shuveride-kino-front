@@ -1,5 +1,6 @@
 import {NextPage} from "next";
 import {NextPageAuth} from "@/shared/types/auth.types";
+import {Admin} from "@/screens/admin/Admin";
 
 interface IAdminPageProps {
 }
@@ -7,7 +8,7 @@ interface IAdminPageProps {
 const AdminPage: NextPageAuth<IAdminPageProps> = () => {
   return (
     <div>
-      Admin Page
+      <Admin />
     </div>
   );
 };

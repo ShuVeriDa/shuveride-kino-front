@@ -1,4 +1,4 @@
-//register
+
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {IAuthResponse, IEmailPassword} from "@/store/user/user.interface";
 import {AuthService} from "@/services/auth/auth.service";
