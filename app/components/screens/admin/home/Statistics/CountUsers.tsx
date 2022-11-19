@@ -3,7 +3,7 @@ import {useQuery} from "react-query";
 import {AdminService} from "@/services/admin.service";
 import cn from "classnames";
 
-import styles from './../Admin.module.scss';
+import styles from '../../Admin.module.scss';
 import {SkeletonLoader} from "@/ui/SkeletonLoader";
 
 interface ICountUsersProps {

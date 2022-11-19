@@ -2,7 +2,7 @@ import {FC} from 'react';
 import {useQuery} from "react-query";
 import {AdminService} from "@/services/admin.service";
 
-import styles from './../Admin.module.scss';
+import styles from '../../Admin.module.scss';
 import {MovieService} from "@/services/movie.service";
 import {IMovie} from "@/shared/types/movie.types";
 import cn from "classnames";

@@ -4,7 +4,7 @@ import {getGenresUrl, getMoviesUrl} from "@/config/api.config";
 
 export const MovieService = {
   async getAll(searchTerm?: string) {
-    return axiosClassic.get<IMovie[]>(getMoviesUrl(``), {
+    return axiosClassic.get<IMovie[]>(getMoviesUrl(''), {
       params: searchTerm
         ? {
           searchTerm,
