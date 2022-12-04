@@ -17,15 +17,15 @@ export const GenreService = {
   },
 
   async getById(_id: string) {
-    return axios.get<IGenreEditInput>(getGenresUrl(`/${_id}`))
+    return instance.get<IGenreEditInput>(getGenresUrl(`/${_id}`))
   },
 
 
   async update(_id: string, data: IGenreEditInput) {
-    return instance.put<string>(getGenreUrl(`/${_id}`), data)
+    return instance.put<string>(getGenresUrl(`/${_id}`), data)
   },
 
   async delete(_id: string) {
-    return instance.delete<string>(getGenreUrl(`/${_id}`))
+    return instance.delete<string>(getGenresUrl(`/${_id}`))
   }
 }

@@ -12,6 +12,7 @@ export const Statistics: FC<IStatisticsProps> = () => {
     <div className={styles.statistics}>
       <CountUsers />
       <PopularMovie />
+
     </div>
   );
 };

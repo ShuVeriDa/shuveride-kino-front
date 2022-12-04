@@ -1,4 +1,3 @@
-import {NextPage} from "next";
 import {NextPageAuth} from "@/shared/types/auth.types";
 import {GenreEdit} from "@/screens/admin/genre/GenreEdit";
 
