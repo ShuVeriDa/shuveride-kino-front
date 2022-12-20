@@ -19,8 +19,9 @@ export const GenreService = {
   async getById(_id: string) {
     return instance.get<IGenreEditInput>(getGenresUrl(`/${_id}`))
   },
-
-
+  async create() {
+    return instance.post<string>(getGenresUrl(`/`))
+  },
   async update(_id: string, data: IGenreEditInput) {
     return instance.put<string>(getGenresUrl(`/${_id}`), data)
   },

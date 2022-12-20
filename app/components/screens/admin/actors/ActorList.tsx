@@ -11,13 +11,13 @@ interface IActorListProps {
 
 export const ActorList: FC<IActorListProps> = () => {
 
-  const {isLoading, handleSearch, searchTerm, data, deleteAsync} = useActors()
+  const {isLoading, handleSearch, searchTerm, data, deleteAsync, createAsync} = useActors()
   return (
   <Meta title={'Actors'}>
     <AdminNavigation />
     <Heading title={'Actors'} />
 
-    <AdminHeader handleSearch={handleSearch} searchTerm={searchTerm}  />
+    <AdminHeader handleSearch={handleSearch} searchTerm={searchTerm} onClick={createAsync} />
     <AdminTable isLoading={isLoading} removeHandler={deleteAsync} headerItems={['Name', 'Count movies']} tableItems={data || []}/>
 
   </Meta>

@@ -7,6 +7,7 @@ export const usePopularGenres = () => {
   const queryData = useQuery('popular genres menu', () => GenreService.getAll(), {
     select:
       ({data}) => data
+        .filter(genre => genre.icon)
         .map(
           (genre): IMenuItem =>
             ({

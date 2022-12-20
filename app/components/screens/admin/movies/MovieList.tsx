@@ -12,14 +12,14 @@ interface IUserListProps {
 
 export const MovieList: FC<IUserListProps> = () => {
 
-  const {isLoading, handleSearch, searchTerm, data, deleteAsync} = useMovies()
+  const {isLoading, handleSearch, searchTerm, data, deleteAsync, createAsync} = useMovies()
 
   return (
   <Meta title={'Movies'}>
     <AdminNavigation />
     <Heading title={'Movies'} />
 
-    <AdminHeader handleSearch={handleSearch} searchTerm={searchTerm}  />
+    <AdminHeader handleSearch={handleSearch} searchTerm={searchTerm} onClick={createAsync} />
     <AdminTable isLoading={isLoading} removeHandler={deleteAsync} headerItems={['Title', 'Genre', 'Rating']} tableItems={data || []}/>
 
   </Meta>

@@ -1,7 +1,9 @@
 import {axiosClassic, instance} from "../api/interceptors";
 import {IGenre, IMovie} from "@/shared/types/movie.types";
-import {getGenresUrl, getMoviesUrl, getUsersUrl} from "@/config/api.config";
+import {getActorsUrl, getGenresUrl, getMoviesUrl, getUsersUrl} from "@/config/api.config";
 import {getMovieUrl} from "@/config/url.config";
+import {IActorEditInput} from "@/screens/admin/actor/actor-edit.inteface";
+import {IMovieEditInput} from "@/screens/admin/movie/movie-edit.inteface";
 
 export const MovieService = {
   async getAll(searchTerm?: string) {
@@ -14,13 +16,24 @@ export const MovieService = {
     })
   },
 
+  async getById(_id: string) {
+    return instance.get<IMovieEditInput>(getMoviesUrl(`/${_id}`))
+  },
+
+  async create() {
+    return instance.post<string>(getMoviesUrl('/'))
+  },
+
+  async update(_id: string, data: IMovieEditInput) {
+    return instance.put<string>(getMoviesUrl(`/${_id}`), data)
+  },
+
   async getPopularMovies() {
     const {data: movies} = await axiosClassic.get<IMovie[]>(getMoviesUrl('/most-popular'))
-
     return movies
   },
 
-  async deleteMovie(_id: string) {
+  async delete(_id: string) {
     return instance.delete<string>(getMovieUrl(`/${_id}`))
   }
 }

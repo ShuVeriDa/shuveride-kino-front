@@ -7,6 +7,8 @@ import {convertMongoDate} from "@/utils/date/convertMongoDate";
 import {toastError} from "@/utils/toastError";
 import {toastr} from "react-redux-toastr";
 import {ActorService} from "@/services/actor.service";
+import {useRouter} from "next/router";
+import {MovieService} from "@/services/movie.service";
 
 export const useActors = () => {
   const [searchTerm, setSearchTerm] = useState('')
@@ -34,9 +36,25 @@ export const useActors = () => {
     setSearchTerm(e.currentTarget.value)
   }
 
+  const {push} = useRouter()
+
+  const {mutateAsync: createAsync} = useMutation(
+    'create actor',
+    () => ActorService.create(),
+    {
+      onError: (error) => {
+        toastError(error, 'Create actor')
+      },
+      onSuccess: ({data:  _id}) => {
+        toastr.success("Create actor", 'create was successful')
+        push(getAdminUrl(`actor/edit/${_id}`))
+      }
+    }
+  )
+
   const {mutateAsync: deleteAsync} = useMutation(
     'delete actor',
-    (actorId: string) => ActorService.deleteActor(actorId),
+    (actorId: string) => ActorService.delete(actorId),
     {
       onError: (error) => {
         toastError(error, 'Delete actor')
@@ -53,8 +71,9 @@ export const useActors = () => {
       handleSearch,
       ...queryData,
       searchTerm,
+      createAsync,
       deleteAsync,
     }),
-    [queryData, searchTerm, deleteAsync]
+    [queryData, searchTerm, createAsync, deleteAsync]
   )
 }
