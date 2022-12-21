@@ -17,6 +17,7 @@ import formStyles from '../../../ui/form-elements/admin-form.module.scss'
 import dynamic from "next/dynamic";
 import {useActorEdit} from "@/screens/admin/actor/useActorEdit";
 import {IActorEditInput} from "@/screens/admin/actor/actor-edit.inteface";
+import UploadField from "@/ui/form-elements/UploadField/UploadField";
 
 
 const DynamicTextEditor = dynamic(() => import('@/ui/form-elements/TextEditor'), {
@@ -60,19 +61,19 @@ export const ActorEdit: FC<IActorEditProps> = () => {
               }}/>
             </div>
 
-            {/*<Controller control={control}*/}
-            {/*            name='photo'*/}
-            {/*            defaultValue=''*/}
-            {/*            render={({*/}
-            {/*                       field: {value, onChange},*/}
-            {/*                       fieldState: {error}*/}
-            {/*                     }) => (*/}
-            {/*              // photo upload*/}
-            {/*            )}*/}
-            {/*            rules={{*/}
-            {/*              required: "Photo is required"*/}
-            {/*            }}*/}
-            {/*/>*/}
+            <Controller control={control}
+                        name='photo'
+                        defaultValue=''
+                        render={({
+                                   field: {value, onChange},
+                                   fieldState: {error}
+                                 }) => (
+                          <UploadField onChange={onChange}  value={value} error={error} folder={'actors'}  placeHolder={'photo'}/>
+                        )}
+                        rules={{
+                          required: "Photo is required"
+                        }}
+            />
 
           </div>
           <Button>Update</Button>
