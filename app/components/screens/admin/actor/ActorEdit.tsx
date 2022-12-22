@@ -1,7 +1,5 @@
 import {FC} from 'react';
 import {Controller, useForm} from "react-hook-form";
-import {IGenreEditInput} from "@/screens/admin/genre/genre-edit.inteface";
-import {useGenreEdit} from "@/screens/admin/genre/useGenreEdit";
 import {Meta} from "@/utils/meta/Meta";
 import {AdminNavigation} from "@/ui/adminNavigation/AdminNavigation";
 import {Heading} from "@/ui/heading/Heading";
@@ -10,19 +8,12 @@ import {Field} from "@/ui/form-elements/Field";
 import {SlugField} from "@/ui/form-elements/SlugField/SlugField";
 import {generateSlug} from "@/utils/string/generateSlug";
 import {Button} from "@/ui/form-elements/Button";
-import {stripHtml} from 'string-strip-html'
-
 
 import formStyles from '../../../ui/form-elements/admin-form.module.scss'
-import dynamic from "next/dynamic";
 import {useActorEdit} from "@/screens/admin/actor/useActorEdit";
 import {IActorEditInput} from "@/screens/admin/actor/actor-edit.inteface";
 import UploadField from "@/ui/form-elements/UploadField/UploadField";
 
-
-const DynamicTextEditor = dynamic(() => import('@/ui/form-elements/TextEditor'), {
-  ssr: false,
-})
 
 interface IActorEditProps {
 }

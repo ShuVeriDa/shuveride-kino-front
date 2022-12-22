@@ -34,6 +34,6 @@ export const MovieService = {
   },
 
   async delete(_id: string) {
-    return instance.delete<string>(getMovieUrl(`/${_id}`))
+    return instance.delete<string>(getMoviesUrl(`/${_id}`))
   }
 }
