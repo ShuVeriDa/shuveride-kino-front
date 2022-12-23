@@ -4,16 +4,19 @@ import {Layout} from "@/components/layout/Layout";
 import {Meta} from "@/utils/meta/Meta";
 import {Heading} from "@/ui/heading/Heading";
 import {toastr} from "react-redux-toastr";
+import {Slider} from "@/ui/slider/Slider";
 
 interface HomePropsType {
 }
 
-export const Home: FC<IHome> = () => {
+export const Home: FC<IHome> = ({slides}) => {
   return (
     <Meta title={'Watch movies online'}
           description={"Watch MovieApp movies and TV shows online or stream right to your browser"}
     >
       <Heading title="Watch movies online" className={'text-gray-300 mb-8 text-xl'}/>
+
+      {slides.length && <Slider slides={slides} />}
     </Meta>
   );
 };
