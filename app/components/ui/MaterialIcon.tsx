@@ -2,12 +2,13 @@ import {FC} from 'react';
 import * as MaterialIcons from 'react-icons/md'
 
 import {TypeMaterialIconName} from "@/shared/types/icon.types";
-import {MdHome} from "react-icons/md";
-
+import {useRenderClient} from "@/hooks/useRenderClient";
 
 export const MaterialIcon: FC<{name: TypeMaterialIconName}> = ({name}) => {
-
+  const {isRenderClient} = useRenderClient()
   const IconComponent = MaterialIcons[name]
 
-  return <IconComponent /> || <MaterialIcons.MdDragIndicator />
+  if (isRenderClient) {
+    return <IconComponent /> || <MaterialIcons.MdDragIndicator />
+  } else return null
 };

@@ -7,7 +7,7 @@ import {getAdminHomeUrl} from "@/config/url.config";
 interface AuthItemsPropsType {
 }
 
-export const AuthItems: FC<AuthItemsPropsType> = () => {
+const AuthItems: FC<AuthItemsPropsType> = () => {
   const {user} = useAuth()
   return (
     <>
@@ -39,3 +39,5 @@ export const AuthItems: FC<AuthItemsPropsType> = () => {
     </>
   );
 };
+
+export default AuthItems

@@ -16,7 +16,7 @@ interface IPopularMovieProps {
 }
 
 export const PopularMovie: FC<IPopularMovieProps> = () => {
-  const {isLoading, data: movie} = useQuery("Most popular movie in admin", () => MovieService.getPopularMovies(), {
+  const {isLoading, data: movie} = useQuery("Most popular movie in admin", () => MovieService.getMostPopularMovies(), {
     select: (data): IMovie => data[0]
   })
   return (

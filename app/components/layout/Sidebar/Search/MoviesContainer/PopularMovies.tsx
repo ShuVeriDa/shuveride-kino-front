@@ -8,7 +8,7 @@ interface IPopularMoviesProps {
 }
 
 export const PopularMovies: FC<IPopularMoviesProps> = () => {
-  const {isLoading, data: popularMovies} = useQuery('Popular movies in sidebar', () => MovieService.getPopularMovies())
+  const {isLoading, data: popularMovies} = useQuery('Popular movies in sidebar', () => MovieService.getMostPopularMovies())
   return isLoading
     ? <div className={'mt-11'}>
         <SkeletonLoader count={3} className={"h-28 mb-4"}/>
