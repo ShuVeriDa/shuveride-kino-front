@@ -1,8 +1,6 @@
-import {getActorsUrl, getGenresUrl, getMoviesUrl} from "@/config/api.config";
+import {getActorsUrl} from "@/config/api.config";
 import {IActor} from "@/shared/types/movie.types";
 import {axiosClassic, instance} from "../api/interceptors";
-import {getActorUrl} from "@/config/url.config";
-import {IGenreEditInput} from "@/screens/admin/genre/genre-edit.inteface";
 import {IActorEditInput} from "@/screens/admin/actor/actor-edit.inteface";
 
 export const ActorService = {
@@ -18,6 +16,9 @@ export const ActorService = {
 
   async getById(_id: string) {
     return instance.get<IActorEditInput>(getActorsUrl(`/${_id}`))
+  },
+  async getBySlug(slug: string) {
+    return axiosClassic.get<IActor>(getActorsUrl(`/by-slug/${slug}`))
   },
 
   async create() {
