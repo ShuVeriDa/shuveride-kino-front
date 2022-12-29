@@ -1,14 +1,11 @@
 import {NextPageAuth} from "@/shared/types/auth.types";
+import {Profile} from "@/screens/profile/Profile";
 
 interface IProfilePageProps {
 }
 
 const ProfilePage: NextPageAuth = () => {
-  return (
-    <div>
-      Profile
-    </div>
-  );
+  return <Profile />
 };
 
 ProfilePage.isOnlyUser = true
