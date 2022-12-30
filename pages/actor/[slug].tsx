@@ -24,36 +24,39 @@ const ActorPage: NextPage<IActorPageProps> = ({movies, actor}) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   try {
-    const {data: actors} = await ActorService.getAll()
-    const paths = actors.map(a => ({
-      params: {slug: a.slug}
+    const { data: actors } = await ActorService.getAll()
+    const paths = actors.map((g) => ({
+      params: { slug: g.slug },
     }))
 
-    return {paths, fallback: 'blocking'}
+    return {
+      paths,
+      fallback: 'blocking',
+    }
+  } catch (e) {
+    // console.log(errorCatch(e))
 
-  } catch (error) {
     return {
       paths: [],
-      fallback: false
+      fallback: false,
     }
   }
 }
 
-export const getStaticProps: GetStaticProps = async ({params}) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
-    const {data: actor} = await ActorService.getBySlug(String(params?.slug))
+    const { data: actor } = await ActorService.getBySlug(String(params?.slug))
 
-    const {data: movies} = await MovieService.getByActor(actor._id)
+    const { data: movies } = await MovieService.getByActor(actor._id)
 
     return {
-      props: {
-        movies,
-        actor
-      }
+      props: { movies, actor },
     }
-  } catch (error) {
+  } catch (e) {
+    // console.log(errorCatch(e))
+
     return {
-      notFound: true
+      notFound: true,
     }
   }
 }
