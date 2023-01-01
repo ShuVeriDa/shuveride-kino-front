@@ -23,6 +23,21 @@ const GenrePage: NextPage<IGenrePageProps> = ({movies, genre}) => {
   )
 }
 
+export const getStaticProps: GetStaticProps = async ({params}) => {
+  try {
+    const {data: genre} = await GenreService.getBySlug(String(params?.slug))
+
+    const {data: movies} = await MovieService.getByGenres([genre._id])
+
+    return {
+      props: {movies, genre},
+    }
+  } catch (e) {
+    return {
+      notFound: true,
+    }
+  }
+}
 
 export const getStaticPaths: GetStaticPaths = async () => {
   try {
@@ -43,19 +58,5 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps = async ({params}) => {
-  try {
-    const {data: genre} = await GenreService.getBySlug(String(params?.slug))
 
-    const {data: movies} = await MovieService.getByGenres([genre._id])
-
-    return {
-      props: {movies, genre},
-    }
-  } catch (e) {
-    return {
-      notFound: true,
-    }
-  }
-}
 export default GenrePage
