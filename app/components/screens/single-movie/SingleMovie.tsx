@@ -7,12 +7,18 @@ import {Gallery} from "@/ui/gallery/Gallery";
 import {Content} from "@/screens/single-movie/Content/Content";
 // import {VideoPlayer} from "@/ui/video-player/VideoPlayer";
 import dynamic from "next/dynamic";
+import {useUpdateCountOpened} from "@/screens/single-movie/RateMovie/useUpdateCountOpened";
 
 const DynamicPlayer = dynamic(() => import("@/ui/video-player/VideoPlayer"), {
   ssr: false
 })
+const DynamicRateMovie = dynamic(() => import("@/screens/single-movie/RateMovie/RateMovie"), {
+  ssr: false
+})
+
 
 const SingleMovie: FC<IMoviePageProps> = ({movie, similarMovies}) => {
+  useUpdateCountOpened(movie.slug)
   return (
     <Meta title={movie.title} description={`Watch ${movie?.title}`}>
       <Banner image={movie.bigPoster}
@@ -26,7 +32,7 @@ const SingleMovie: FC<IMoviePageProps> = ({movie, similarMovies}) => {
         <Gallery items={similarMovies}/>
       </div>
 
-      {/*  Rating*/}
+      <DynamicRateMovie movieId={movie._id} slug={movie.slug} />
     </Meta>
   );
 };
