@@ -8,7 +8,7 @@ import {Description} from "@/ui/heading/Description";
 import {GalleryItem} from "@/ui/gallery/GalleryItem";
 import {getMovieUrl} from "@/config/url.config";
 
-export const Catalog: FC<ICatalog> = ({title, movies, description}) => {
+const Catalog: FC<ICatalog> = ({title, movies, description}) => {
   return (
     <Meta title={title} description={description}>
       <Heading title={title} className={styles.heading}/>
@@ -31,3 +31,5 @@ export const Catalog: FC<ICatalog> = ({title, movies, description}) => {
     </Meta>
   );
 };
+
+export default Catalog

@@ -1,9 +1,9 @@
 import Error404 from "../404";
-import {GetStaticPaths, GetStaticProps, NextPage} from "next";
+import {GetServerSideProps, GetStaticPaths, GetStaticProps, NextPage} from "next";
 import {ActorService} from "@/services/actor.service";
 import {MovieService} from "@/services/movie.service";
 import {IActor, IMovie} from "@/shared/types/movie.types";
-import {Catalog} from "@/ui/catalog-movies/Catalog";
+import Catalog from "@/ui/catalog-movies/Catalog";
 
 interface IActorPageProps {
   movies: IMovie[]

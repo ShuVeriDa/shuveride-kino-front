@@ -1,6 +1,6 @@
 import {GetStaticProps, NextPage} from "next";
 import {IMovie} from "@/shared/types/movie.types";
-import {Catalog} from "@/ui/catalog-movies/Catalog";
+import Catalog from "@/ui/catalog-movies/Catalog";
 import {MovieService} from "@/services/movie.service";
 
 interface IFreshProps {

@@ -43,18 +43,18 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
 
     const {data: dataSimilarMovies} = await MovieService.getByGenres(movie.genres.map(g => g._id))
 
-    const similarMovies: IGalleryItem[] = dataSimilarMovies.filter(m => m._id !== movie._id).map((m) => ({
-      name: m.title,
-      posterPath: m.poster,
-      link: getMovieUrl(m.slug)
-    }))
+    const similarMovies: IGalleryItem[] = dataSimilarMovies
+      .filter(m => m._id !== movie._id)
+      .map((m) => ({
+        name: m.title,
+        posterPath: m.poster,
+        link: getMovieUrl(m.slug)
+      }))
 
     return {
-      props: {similarMovies, movie},
+      props: {movie, similarMovies},
     }
   } catch (e) {
-    // console.log(errorCatch(e))
-
     return {
       notFound: true,
     }

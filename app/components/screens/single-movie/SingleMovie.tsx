@@ -1,5 +1,5 @@
 import {FC} from 'react';
-import {IMoviePageProps} from "../../../../pages/movie/[slug]";
+
 import {Meta} from "@/utils/meta/Meta";
 import {Banner} from "@/ui/banner/Banner";
 import {SubHeading} from "@/ui/heading/SubHeading";
@@ -8,6 +8,7 @@ import {Content} from "@/screens/single-movie/Content/Content";
 // import {VideoPlayer} from "@/ui/video-player/VideoPlayer";
 import dynamic from "next/dynamic";
 import {useUpdateCountOpened} from "@/screens/single-movie/RateMovie/useUpdateCountOpened";
+import {IMoviePageProps} from "../../../../pages/movie/[slug]";
 
 const DynamicPlayer = dynamic(() => import("@/ui/video-player/VideoPlayer"), {
   ssr: false

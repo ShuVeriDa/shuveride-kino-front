@@ -1,8 +1,6 @@
 import {axiosClassic, instance} from "../api/interceptors";
-import {IGenre, IMovie} from "@/shared/types/movie.types";
-import {getActorsUrl, getGenresUrl, getMoviesUrl, getUsersUrl} from "@/config/api.config";
-import {getMovieUrl} from "@/config/url.config";
-import {IActorEditInput} from "@/screens/admin/actor/actor-edit.inteface";
+import {IMovie} from "@/shared/types/movie.types";
+import {getMoviesUrl} from "@/config/api.config";
 import {IMovieEditInput} from "@/screens/admin/movie/movie-edit.inteface";
 
 export const MovieService = {
@@ -22,7 +20,7 @@ export const MovieService = {
 
   async getByGenres(genreIds: string[]) {
     return axiosClassic.post<IMovie[]>(getMoviesUrl(`/by-genres`), {
-      genreIds
+      genreIds,
     })
   },
 
@@ -30,8 +28,8 @@ export const MovieService = {
     return axiosClassic.get<IMovie[]>(getMoviesUrl(`/by-actor/${actorId}`))
   },
 
-  async getBySlug(actorId: string) {
-    return axiosClassic.get<IMovie>(getMoviesUrl(`/by-slug/${actorId}`))
+  async getBySlug(slug: string) {
+    return axiosClassic.get<IMovie>(getMoviesUrl(`/by-slug/${slug}`))
   },
 
   async create() {

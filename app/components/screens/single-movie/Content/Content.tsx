@@ -5,6 +5,7 @@ import {IMovie} from "@/shared/types/movie.types";
 import {ContentList} from "@/screens/single-movie/Content/ContentList/ContentList";
 import {getActorUrl, getGenreUrl} from "@/config/url.config";
 import {MaterialIcon} from "@/ui/MaterialIcon";
+import {FavoriteButton} from "@/screens/single-movie/FavoriteButton/FavoriteButton";
 
 interface IContentProps {
 }
@@ -37,6 +38,9 @@ export const Content: FC<{ movie: IMovie }> = ({movie}) => {
         <MaterialIcon name={"MdStarRate"}/>
         <span>{movie.rating.toFixed(1)}</span>
       </div>
+
+      <FavoriteButton movieId={movie._id} />
+
     </div>
   );
 };

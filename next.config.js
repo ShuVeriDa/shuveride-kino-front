@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true, //нужно выключить
+  reactStrictMode: false, //нужно выключить
   swcMinify: true,
 
   poweredByHeader: false,
@@ -19,7 +19,7 @@ const nextConfig = {
       {
         source: '/uploads/:path*',
         destination: 'http://localhost:4200/uploads/:path*'
-      }
+      },
     ]
   }
 }

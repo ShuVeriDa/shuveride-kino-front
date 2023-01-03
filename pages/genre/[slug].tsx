@@ -1,6 +1,6 @@
 import {GetStaticPaths, GetStaticProps, NextPage} from "next";
 import {IGenre, IMovie} from "@/shared/types/movie.types";
-import {Catalog} from "@/ui/catalog-movies/Catalog";
+import Catalog from "@/ui/catalog-movies/Catalog";
 
 import Error404 from "../404";
 import {MovieService} from "@/services/movie.service";
