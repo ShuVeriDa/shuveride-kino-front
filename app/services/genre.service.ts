@@ -4,6 +4,7 @@ import {axiosClassic, instance} from "../api/interceptors";
 import {getGenreUrl} from "@/config/url.config";
 import {IGenreEditInput} from "@/screens/admin/genre/genre-edit.inteface";
 import axios from "axios";
+import {ICollection} from "@/screens/collections/collections.interface";
 
 export const GenreService = {
   async getAll(searchTerm?: string) {
@@ -21,6 +22,9 @@ export const GenreService = {
   },
   async getBySlug(slug: string) {
     return axiosClassic.get<IGenre>(getGenresUrl(`/by-slug/${slug}`))
+  },
+  async getCollections() {
+    return axiosClassic.get<ICollection[]>(getGenresUrl(`/collections`))
   },
   async create() {
     return instance.post<string>(getGenresUrl(`/`))
