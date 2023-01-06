@@ -1,16 +1,14 @@
 import {FC, useEffect, useState} from 'react';
 
 import styles from './Form.module.scss';
-import {ITextEditor} from "@/ui/form-elements/form.interface";
-import {ContentState, convertToRaw, EditorState} from "draft-js";
-import htmlToDraft from "html-to-draftjs";
-import draftToHtml from "draftjs-to-html";
-import cn from "classnames";
-import {Editor} from "react-draft-wysiwyg";
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 
-interface ITextEditorProps {
-}
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import htmlToDraft from "html-to-draftjs";
+import {ContentState, convertToRaw, EditorState} from "draft-js";
+import {ITextEditor} from "@/ui/form-elements/form.interface";
+import cn from "classnames";
+import draftToHtml from "draftjs-to-html";
+import { Editor } from 'react-draft-wysiwyg';
 
 const TextEditor: FC<ITextEditor> = ({onChange, value, placeholder, error}) => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty())
@@ -64,7 +62,7 @@ const TextEditor: FC<ITextEditor> = ({onChange, value, placeholder, error}) => {
                 options: [],
               },
               list: {
-                inDrodown: false,
+                inDropdown: false,
                 options: ['unordered', 'ordered'],
               },
             }}

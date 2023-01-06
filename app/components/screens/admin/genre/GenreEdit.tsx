@@ -10,11 +10,11 @@ import {Field} from "@/ui/form-elements/Field";
 import {SlugField} from "@/ui/form-elements/SlugField/SlugField";
 import {generateSlug} from "@/utils/string/generateSlug";
 import {Button} from "@/ui/form-elements/Button";
-import {stripHtml} from 'string-strip-html'
 
 
 import formStyles from '../../../ui/form-elements/admin-form.module.scss'
 import dynamic from "next/dynamic";
+import {stripHtml} from "string-strip-html";
 
 
 const DynamicTextEditor = dynamic(() => import('@/ui/form-elements/TextEditor'), {
@@ -67,23 +67,23 @@ export const GenreEdit: FC<IGenreEditProps> = () => {
             />
           </div>
 
-          <Controller control={control}
-                      name='description'
-                      defaultValue=''
+          <Controller name="description"
+                      control={control}
+                      defaultValue=""
                       render={({
-                                 field: {value, onChange},
-                                 fieldState: {error}
+                                 field: { value, onChange },
+                                 fieldState: { error },
                                }) => (
                         <DynamicTextEditor
+                          placeholder="Description"
                           onChange={onChange}
-                          value={value}
                           error={error}
-                          placeholder={"Description"}/>
+                          value={value}
+                        />
                       )}
                       rules={{
                         validate: {
-                          required: (v) => (
-                            v && stripHtml(v).result.length > 0) || "Description is required"
+                          required: (v) => (v && stripHtml(v).result.length > 0) || 'Description is required!',
                         }
                       }}
           />
