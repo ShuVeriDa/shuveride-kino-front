@@ -1,9 +1,10 @@
 import Error404 from "../404";
-import {GetServerSideProps, GetStaticPaths, GetStaticProps, NextPage} from "next";
+import {GetStaticPaths, GetStaticProps, NextPage} from "next";
 import {ActorService} from "@/services/actor.service";
 import {MovieService} from "@/services/movie.service";
 import {IActor, IMovie} from "@/shared/types/movie.types";
 import Catalog from "@/ui/catalog-movies/Catalog";
+
 
 interface IActorPageProps {
   movies: IMovie[]
@@ -20,7 +21,6 @@ const ActorPage: NextPage<IActorPageProps> = ({movies, actor}) => {
       <Error404/>
   );
 };
-
 
 export const getStaticPaths: GetStaticPaths = async () => {
   try {
@@ -42,7 +42,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
     }
   }
 }
-
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
     const { data: actor } = await ActorService.getBySlug(String(params?.slug))
@@ -51,6 +50,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
     return {
       props: { movies, actor },
+      revalidate: 60,
     }
   } catch (e) {
     // console.log(errorCatch(e))
@@ -60,4 +60,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }
   }
 }
+
+
 export default ActorPage

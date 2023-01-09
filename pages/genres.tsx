@@ -18,8 +18,9 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
     const {data: collections} = await GenreService.getCollections()
     return {
       props: {
-        collections
-      }
+        collections,
+      },
+      revalidate: 60,
     }
   } catch (error) {
     return {

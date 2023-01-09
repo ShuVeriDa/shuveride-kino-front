@@ -16,7 +16,7 @@ const Catalog: FC<ICatalog> = ({title, movies, description}) => {
       {description && <Description text={description} className={styles.descriptions}/>}
 
       <section className={styles.movies}>
-        {movies.map(movie => <GalleryItem key={movie._id}
+        {movies.map((movie) => <GalleryItem key={movie._id}
                                           item={{
                                             name: movie.title,
                                             link: getMovieUrl(movie.slug),

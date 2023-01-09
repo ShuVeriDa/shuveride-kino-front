@@ -13,7 +13,7 @@ export const MoviesList: FC<IMovieList> = ({movies, title, link}) => {
       </div>
       {movies.map(movie => <MovieItem key={movie._id} movie={movie}/>)}
       <Link href={link} className={styles.button}>
-        See more
+        {link === '/trending' ? 'All trending movies' : 'All popular movies'}
       </Link>
     </div>
   );

@@ -9,7 +9,11 @@ interface IAuthFieldsProps {
   isPasswordRequired?: boolean
 }
 
-export const AuthFields: FC<IAuthFieldsProps> = ({isPasswordRequired = false, formState: {errors}, register}) => {
+export const AuthFields: FC<IAuthFieldsProps> = (
+  {
+    isPasswordRequired = false, formState: {errors}, register
+  }
+) => {
   return (
     <>
       <Field

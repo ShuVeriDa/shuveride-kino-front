@@ -5,13 +5,18 @@ import {Meta} from "@/utils/meta/Meta";
 import {Heading} from "@/ui/heading/Heading";
 import {useFavorites} from "@/screens/favorites/useFavorites";
 import {SkeletonLoader} from "@/ui/SkeletonLoader";
-import movies from "../../../../pages/manage/movies";
 import {FavoriteItem} from "@/screens/favorites/FavoriteItem";
+import {useAuth} from "@/hooks/useAuth";
+
 interface IFavoritesProps {
 }
 
 export const Favorites: FC<IFavoritesProps> = () => {
   const {isLoading, favoriteMovies} = useFavorites()
+
+  const {user} = useAuth()
+
+  if(!user) return null
 
   return (
     <Meta title={'Favorites'}>

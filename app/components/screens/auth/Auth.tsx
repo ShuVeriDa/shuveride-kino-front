@@ -43,6 +43,7 @@ export const Auth: FC<IAuthProps> = () => {
         <AuthFields register={registerInput}
                     formState={formState}
                     isPasswordRequired
+
         />
 
       <div className={styles.buttons}>

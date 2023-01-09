@@ -25,8 +25,10 @@ const VideoPlayer: FC<IVideoPlayer> = ({videoSource, slug}) => {
                  className={styles.video}
                  preload='metadata'
           />
-          <div>
-            <div style={{width: `${video.progress}%`}}></div>
+          <div className={styles.progressBarContainer}>
+            <div style={{width: `${video.progress}%`}}
+                 className={styles.progressBar}
+            />
           </div>
 
           <div className={styles.controls}>

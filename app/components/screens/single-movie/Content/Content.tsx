@@ -6,11 +6,13 @@ import {ContentList} from "@/screens/single-movie/Content/ContentList/ContentLis
 import {getActorUrl, getGenreUrl} from "@/config/url.config";
 import {MaterialIcon} from "@/ui/MaterialIcon";
 import {FavoriteButton} from "@/screens/single-movie/FavoriteButton/FavoriteButton";
+import {useAuth} from "@/hooks/useAuth";
 
 interface IContentProps {
 }
 
 export const Content: FC<{ movie: IMovie }> = ({movie}) => {
+  const {user} = useAuth()
   return (
     <div className={styles.content}>
       <h1>{movie.title}</h1>
@@ -39,7 +41,7 @@ export const Content: FC<{ movie: IMovie }> = ({movie}) => {
         <span>{movie.rating.toFixed(1)}</span>
       </div>
 
-      <FavoriteButton movieId={movie._id} />
+      {user && <FavoriteButton movieId={movie._id} />}
 
     </div>
   );

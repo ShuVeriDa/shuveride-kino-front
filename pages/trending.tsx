@@ -21,7 +21,8 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
     return {
       props: {
         movies
-      }
+      },
+      revalidate: 60,
     }
   } catch (error) {
     return {

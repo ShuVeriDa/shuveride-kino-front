@@ -7,28 +7,31 @@ import {toastr} from "react-redux-toastr";
 import {getAdminUrl} from "@/config/url.config";
 import {SubmitHandler} from "react-hook-form";
 import {RatingService} from "@/services/rating.service";
+import {useAuth} from "@/hooks/useAuth";
 
 export const useRateMovie = (movieId: string) => {
-    const [rating, setRating] = useState(0)
+  const [rating, setRating] = useState(0)
   const [isSended, setIsSended] = useState(false)
 
-  const { refetch } = useQuery(
+  const {user} = useAuth()
+
+  const {refetch} = useQuery(
     ['your movie rating', movieId],
     () => RatingService.getByUserMovie(movieId),
     {
-      onSuccess({ data }) {
+      onSuccess({data}) {
         setRating(data)
       },
       onError(error) {
         toastError(error, 'Get rating')
       },
-      enabled: !!movieId,
+      enabled: !!movieId && !!user,
     }
   )
 
-  const { mutateAsync } = useMutation(
+  const {mutateAsync} = useMutation(
     'set rating movie',
-    ({value}: {value: number}) => RatingService.setRating(movieId, value),
+    ({value}: { value: number }) => RatingService.setRating(movieId, value),
     {
       onError(error) {
         toastError(error, 'Rate movie')
@@ -47,11 +50,11 @@ export const useRateMovie = (movieId: string) => {
   )
 
   const handleClick = async (nextValue: number) => {
-      setRating(nextValue)
+    setRating(nextValue)
     await mutateAsync({value: nextValue})
   }
 
   return {
-      isSended, rating, handleClick
+    isSended, rating, handleClick
   }
 }
