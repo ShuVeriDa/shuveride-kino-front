@@ -14,7 +14,7 @@ interface IMetaProps {
 export const Meta: FC<ISeo & IMetaProps> = ({title, description, image, children}) => {
 
   const {asPath} = useRouter()
-  const currentUrl = `${process.env.REACT_APP_API_URL}${asPath}`
+  const currentUrl = `${process.env.REACT_APP_URL}${asPath}`
 
   return (
     <>
