@@ -4,7 +4,7 @@ import {IOption, ISelect} from "@/ui/select/select.interface";
 import ReactSelect, {OnChangeValue} from "react-select";
 
 import styles from './Select.module.scss';
-import formStyles from '../form-elements/Form.module.scss'
+import formStyles from '../form-elements/form.module.scss'
 
 interface ISelectProps {
 }

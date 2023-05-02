@@ -1,7 +1,7 @@
 import {FC} from 'react';
 import {IButton} from "@/ui/form-elements/form.interface";
 
-import styles from './Form.module.scss';
+import styles from './form.module.scss';
 import cn from "classnames";
 
 interface IButtonProps {

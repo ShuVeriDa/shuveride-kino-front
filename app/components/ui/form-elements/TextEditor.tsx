@@ -1,6 +1,6 @@
 import {FC, useEffect, useState} from 'react';
 
-import styles from './Form.module.scss';
+import styles from './form.module.scss';
 
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import htmlToDraft from "html-to-draftjs";
